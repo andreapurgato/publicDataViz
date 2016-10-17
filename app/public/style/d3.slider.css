@@ -1,0 +1,25 @@
+.axis {
+    fill: #2c3e50;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.axis .halo {
+    stroke: #2c3e50;
+    stroke-width: 4px;
+    stroke-linecap: round;
+}
+
+.slider .handle path {
+    stroke: #2c3e50;
+    stroke-width: 3px;
+    stroke-linecap: round;
+    pointer-events: none;
+}
+
+.slider .handle text {
+    fill: #2c3e50;
+    text-align: center;
+    font-size: 18px;
+}

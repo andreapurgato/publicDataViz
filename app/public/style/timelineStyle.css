@@ -1,0 +1,24 @@
+#timeLineBrush path {
+    stroke-width: 3;
+    fill: none;
+}
+
+#timeLineBrush .axis {
+    shape-rendering: crispEdges;
+}
+
+#timeLineBrush .y.axis line, .y.axis path {
+    fill: none;
+    stroke: #2c3e50;
+}
+
+#timeLineBrush .x.axis line, .x.axis path {
+    fill: none;
+    stroke: #2c3e50;
+}
+
+#timeLineBrush .brush .extent {
+    stroke: #2c3e50;
+    fill-opacity: .25;
+    shape-rendering: crispEdges;
+}

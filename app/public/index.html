@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- External CSS file -->
+    <link rel="stylesheet" type="text/css" href="style/jPushMenu.css" />
+    <link rel="stylesheet" type="text/css" href="style/d3.slider.css" />
+
+    <!-- External script inclusion -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
+    <script src="js/jPushMenu.js"></script>
+    <script src="js/d3.slider.js"></script>
+
+    <!-- Include the CSS file -->
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/formStyle.css">
+    <link rel="stylesheet" href="style/timelineStyle.css">
+
+    <!-- Include script -->
+    <script src="js/styleScript.js"></script>
+    <script src="js/dataManager.js"></script>
+    <script src="js/sessionManager.js"></script>
+
+    <title>Brain Network Viz</title>
+</head>
+<body>
+
+    <!-- Left menu element-->
+    <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left">
+        <h3>Operations</h3>
+        <!-- <div class="menuToggle" id="menuNewSession" onclick="showNewSession()">Create Sessions</div>
+        <div class="menuToggle" id="menuDeleteSession" onclick="showDeleteSession()">Delete Session</div> -->
+        <div class="menuToggle" id="menuResetSession" onclick="resetData()">Reset Session</div>
+        <h3>Existing Sessions</h3>
+        <div id="sessionList"></div>
+    </nav>
+
+    <!-- Div used to create a new session -->
+    <div id="newSession">
+
+        <form action="" method="post" class="basic-grey" id="newSessionForm">
+            <h1>Create New Session
+                <span>Please fill all the texts in the fields.</span>
+            </h1>
+            <label>
+                <span>Session Name :</span>
+                <input id="sessionName" type="text" name="sessionName" />
+            </label>
+
+            <label>
+                <span>User Name :</span>
+                <input id="username" type="text" name="username" />
+            </label>
+
+            <label>
+                <span>Time Windows :</span>
+                <input id="timeWindow" type="text" name="timeWindow" />
+            </label>
+
+            <label>
+                <span>Node Number :</span>
+                <input id="nodeNumber" type="text" name="nodeNumber" />
+            </label>
+
+            <label>
+                <span>Data Folder :</span>
+                <input id="dataFolder" type="text" name="dataFolder" />
+            </label>
+            <label>
+                <span>&nbsp;</span>
+                <input type="button" class="button" value="Create" onClick="JavaScript:createSession()" />
+            </label>
+        </form>
+
+    </div>
+
+    <div id="deleteSession">
+        <form action="" method="post" class="basic-grey" >
+            <h1>Sesion Deletion
+                <span>Select the sessin to delete.</span>
+            </h1>
+            <label>
+                <span>Session Name :</span>
+                <select id="deleteSessionList" >
+                    <option value="">Select session...</option>
+                </select>
+            </label>
+            <label>
+                <span>&nbsp;</span>
+                <input type="button" class="button" value="Delete" onClick="JavaScript:deleteSession()" />
+            </label>
+        </form>
+    </div>
+
+    <div id="popupMessage">
+        <form action="" method="post" class="basic-grey" >
+            <h1 id="popupMessageContent"></h1>
+            <label>
+                <input type="button" class="button" value="Ok" onClick="JavaScript:hideMessage()" />
+            </label>
+        </form>
+    </div>
+
+    <div id="progressBar">
+        <form action="" method="post" class="basic-grey" >
+            <h1>Progress</h1>
+            <div id="progressBarDraw"></div>
+        </form>
+    </div>
+
+    <div id="sessionLoaded"><b>Active Sessions</b></div>
+    <div id="sessionLoadedBig"><b>Active Sessions</b></div>
+
+    <div id="tooltip"></div>
+
+    <!-- -->
+    <div id="content">
+
+        <!-- Div with the main content of the page -->
+        <div id="header">
+            <div id="headerMenu" class="toggle-menu menu-left push-body"></div>
+            <div id="headerTitle">Brain Networks</div>
+            <div id="headerSessionNumber">0</div>
+            <div id="headerSession">Session Loaded</div>
+        </div>
+
+        <!-- Div with the main content of the page -->
+        <div id="pageContent"></div>
+
+        <!-- Div with the time line -->
+        <div id="timeLime">
+            <div id="timeLineBrush"></div>
+            <div id="timeLineThreshold">
+                <div id="timeLineInfo">
+                    <!-- <div id="timeLineComm" onClick="JavaScript:drawCommunities()">COMMUNITY</div> -->
+                    <div id="timeLineFilter" onClick="JavaScript:filterData(0,0)">DEFINE EDGES</div>
+                    <div id="timeLineText">Threshold Value:</div>
+                    <div id="timeLineValue">0</div>
+                </div>
+                <div id="timeLineSlider">
+                    <div id="slider"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+</html>

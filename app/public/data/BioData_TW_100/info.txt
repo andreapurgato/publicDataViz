@@ -1,0 +1,4 @@
+width,172
+height,130
+images,300
+imageName,bioData.png
